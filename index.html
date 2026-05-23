@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talha Saleem — Software Engineer</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --surface2: #1c1c27;
+      --border: #2a2a3d;
+      --accent: #6c63ff;
+      --accent2: #a78bfa;
+      --text: #e2e2f0;
+      --muted: #8888aa;
+      --green: #34d399;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 36px; height: 36px; border-radius: 9px;
+    }
+    .nav-logo span {
+      font-size: 1.1rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+      letter-spacing: 0.03em; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 6rem 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,99,255,0.18) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -55%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--surface2); border: 1px solid var(--border);
+      padding: 0.35rem 1rem; border-radius: 999px; font-size: 0.8rem;
+      color: var(--accent2); margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--green);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    h1.hero-name {
+      font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800;
+      line-height: 1.1; margin-bottom: 0.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .hero-title {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--muted);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+    .hero-desc {
+      max-width: 560px; color: var(--muted); font-size: 1rem;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.5rem; border-radius: var(--radius);
+      font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #9f7aea);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(108,99,255,0.35);
+    }
+    .btn-primary:hover { box-shadow: 0 6px 28px rgba(108,99,255,0.5); }
+    .btn-ghost {
+      background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent2); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2rem; max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--accent2); font-weight: 700; margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700;
+      margin-bottom: 3rem;
+    }
+    .section-title span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.97rem; }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .stat-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem; text-align: center;
+      transition: border-color 0.2s;
+    }
+    .stat-card:hover { border-color: var(--accent); }
+    .stat-num {
+      font-size: 2rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ── EXPERIENCE ── */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 14px; top: 0; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+    .timeline-item { position: relative; padding-left: 3rem; margin-bottom: 2.5rem; }
+    .timeline-dot {
+      position: absolute; left: 6px; top: 4px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: 3px solid var(--bg);
+    }
+    .timeline-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .timeline-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(108,99,255,0.12);
+    }
+    .timeline-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.25rem;
+    }
+    .timeline-role { font-weight: 700; font-size: 1.05rem; }
+    .timeline-period {
+      font-size: 0.78rem; color: var(--accent2);
+      background: rgba(108,99,255,0.12); padding: 0.2rem 0.6rem;
+      border-radius: 999px; white-space: nowrap;
+    }
+    .timeline-company { color: var(--muted); font-size: 0.88rem; margin-bottom: 1rem; }
+    .timeline-card ul { padding-left: 1.1rem; }
+    .timeline-card ul li { color: var(--muted); font-size: 0.88rem; margin-bottom: 0.4rem; }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+    .skill-group {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+      transition: border-color 0.2s;
+    }
+    .skill-group:hover { border-color: var(--accent); }
+    .skill-group-title {
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--accent2); font-weight: 700; margin-bottom: 0.85rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 6px; padding: 0.25rem 0.6rem;
+      font-size: 0.78rem; color: var(--text);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tag:hover { border-color: var(--accent2); color: var(--accent2); }
+
+    /* ── PROJECTS ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+    /* Featured project (Intellicon) */
+    .project-featured {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem;
+      margin-bottom: 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .project-featured:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 40px rgba(108,99,255,0.15);
+    }
+    .project-featured-header {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;
+    }
+    .project-featured-icon {
+      width: 52px; height: 52px; min-width: 52px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+    }
+    .project-featured-meta { flex: 1; }
+    .project-featured-name { font-weight: 800; font-size: 1.3rem; }
+    .project-featured-sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.2rem; }
+    .project-featured-badge {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      background: rgba(108,99,255,0.15); color: var(--accent2);
+      border: 1px solid rgba(108,99,255,0.3); border-radius: 999px; padding: 0.3rem 0.75rem;
+    }
+    .project-featured-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.25rem; }
+    .project-modules {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 0.75rem; margin-bottom: 1.25rem;
+    }
+    .project-module {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.65rem 0.85rem;
+    }
+    .project-module-name { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .project-module-desc { font-size: 0.75rem; color: var(--muted); }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1rem; }
+    .project-links { display: flex; gap: 0.75rem; }
+    .project-links a {
+      font-size: 0.82rem; color: var(--accent2); text-decoration: none;
+      display: flex; align-items: center; gap: 0.3rem;
+      border: 1px solid rgba(108,99,255,0.3); border-radius: 6px; padding: 0.35rem 0.75rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .project-links a:hover { background: rgba(108,99,255,0.12); color: var(--text); }
+
+    .project-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      border-color: var(--accent); transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(108,99,255,0.15);
+    }
+    .project-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+    .project-name { font-weight: 700; font-size: 1rem; }
+    .project-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.55; }
+
+    /* ── EDUCATION ── */
+    .edu-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      display: flex; align-items: flex-start; gap: 1.25rem;
+      transition: border-color 0.2s;
+    }
+    .edu-card:hover { border-color: var(--accent); }
+    .edu-icon {
+      width: 48px; height: 48px; min-width: 48px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+    }
+    .edu-degree { font-weight: 700; font-size: 1rem; }
+    .edu-uni { color: var(--accent2); font-size: 0.88rem; margin: 0.15rem 0; }
+    .edu-meta { color: var(--muted); font-size: 0.82rem; }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+    .contact-desc { color: var(--muted); max-width: 480px; margin: -1.5rem auto 2.5rem; }
+    .contact-links {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 0.75rem 1.25rem;
+      text-decoration: none; color: var(--text); font-size: 0.9rem;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .contact-link:hover {
+      border-color: var(--accent); color: var(--accent2); transform: translateY(-2px);
+    }
+    .contact-link svg { opacity: 0.7; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border); padding: 2rem;
+      text-align: center; color: var(--muted); font-size: 0.82rem;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav { padding: 0.85rem 1.25rem; }
+      .nav-links { gap: 1.1rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      section { padding: 4rem 1.25rem; }
+    }
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="logo.svg" alt="Talha Saleem Logo"/>
+    <span>Talha Saleem</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <img src="logo.svg" alt="Talha Saleem" style="width:88px;height:88px;border-radius:22px;margin-bottom:1.25rem;box-shadow:0 8px 32px rgba(108,99,255,0.45);animation:fadeUp 0.5s ease both;"/>
+  <div class="hero-badge"><span class="dot"></span> Open to new opportunities</div>
+  <h1 class="hero-name">Talha Saleem</h1>
+  <p class="hero-title">Full-Stack Software Engineer</p>
+  <p class="hero-desc">
+    4+ years building scalable web applications with React, Next.js, Node.js, and modern cloud infrastructure. Based in Lahore, Pakistan.
+  </p>
+  <div class="hero-cta">
+    <a href="#contact" class="btn btn-primary">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 4l8 9 8-9"/></svg>
+      Get In Touch
+    </a>
+    <a href="#experience" class="btn btn-ghost">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      View My Work
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title">Building products that <span>matter</span></h2>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>
+        I'm a full-stack developer with 4+ years of experience crafting robust web applications. I specialize in React.js, Next.js, Node.js, TypeScript, and PostgreSQL, with a strong focus on scalable architecture and developer experience.
+      </p>
+      <p>
+        At Hashlogics I lead end-to-end development — from pixel-perfect Figma-to-code UIs, to Supabase-powered backends with Row Level Security, to deploying on AWS EC2 and Vercel. I also integrate payment gateways like Stripe and PayPal.
+      </p>
+      <p>
+        I leverage AI tools (including Claude Code) to ship faster without sacrificing quality — staying at the cutting edge of how modern software gets built.
+      </p>
+      <div style="margin-top:1.5rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+        <span class="tag">Lahore, Pakistan</span>
+        <span class="tag">Remote-friendly</span>
+        <span class="tag">Cricket fan</span>
+        <span class="tag">Traveller</span>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Companies</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Technologies</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">MCS</div>
+        <div class="stat-label">Master's Degree</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Work History</div>
+  <h2 class="section-title">Where I've <span>worked</span></h2>
+  <div class="timeline reveal">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <span class="timeline-role">Software Engineer</span>
+          <span class="timeline-period">Feb 2024 — Present</span>
+        </div>
+        <div class="timeline-company">Hashlogics &nbsp;·&nbsp; Lahore, Pakistan</div>
+        <ul>
+          <li>Led development of <strong>TankAware</strong> — an AI-powered petroleum inspection platform for Canada — as the main engineer, building the entire product from scratch (React Native, Vue.js, Laravel, AWS). Achieved 30% better inspection accuracy and 50% reduced operational overhead.</li>
+          <li>Delivered <strong>ZyloBase</strong> at high velocity — a full SaaS CRM for field service businesses with 12 trademarked features, Stripe Connect billing, Twilio SMS, QuickBooks integration, and an offline-capable PWA. Publicly launched May 2026.</li>
+          <li>Built full-stack applications using React.js, Next.js, Redux Toolkit, and Node.js with pixel-perfect responsive UIs from Figma designs.</li>
+          <li>Implemented Supabase with Row Level Security (RLS) and Remote Procedure Calls (RPCs) for secure, scalable backends.</li>
+          <li>Integrated Stripe and PayPal payment gateways; deployed on Vercel, Netlify, and AWS EC2.</li>
+          <li>Leveraged AI tools (Claude Code) to accelerate development speed and deliver higher-quality code faster.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <span class="timeline-role">Software Engineer</span>
+          <span class="timeline-period">Apr 2021 — Oct 2023</span>
+        </div>
+        <div class="timeline-company">Contegris Technology Simplified &nbsp;·&nbsp; Lahore, Pakistan</div>
+        <div style="margin-bottom:0.75rem;">
+          <span style="font-size:0.78rem; color:var(--accent2); background:rgba(108,99,255,0.1); border:1px solid rgba(108,99,255,0.25); border-radius:6px; padding:0.2rem 0.6rem;">
+            Primary Product: <strong>Intellicon</strong> — AI-Powered Omnichannel Contact Center
+          </span>
+        </div>
+        <ul>
+          <li>Built and maintained multiple modules of <strong>Intellicon</strong> — Pakistan's enterprise CCaaS platform used by Daraz, Zameen.com, and major banks.</li>
+          <li>Developed full-stack features across Intellicon's omnichannel hub, IntelliDesk helpdesk, IntelliSales CRM, and real-time agent dashboard using React.js, Node.js, and Express.js.</li>
+          <li>Implemented microservices architecture with RabbitMQ and WebSockets powering Intellicon's real-time call distribution and live chat systems.</li>
+          <li>Designed and built RESTful APIs with MySQL and MongoDB supporting 10+ digital channels including WhatsApp, Facebook, Instagram, SMS, and Email.</li>
+          <li>Integrated third-party telephony, CTI, and business APIs (CRM, ERP) into Intellicon's unified agent panel.</li>
+          <li>Maintained version control and code quality standards using GitLab across a large cross-functional engineering team.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Tech Stack</div>
+  <h2 class="section-title">Skills &amp; <span>Technologies</span></h2>
+  <div class="skills-grid reveal">
+    <div class="skill-group">
+      <div class="skill-group-title">Frontend</div>
+      <div class="skill-tags">
+        <span class="tag">React.js</span>
+        <span class="tag">Next.js</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Redux Toolkit</span>
+        <span class="tag">Tailwind CSS</span>
+        <span class="tag">HTML5</span>
+        <span class="tag">CSS3</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Backend</div>
+      <div class="skill-tags">
+        <span class="tag">Node.js</span>
+        <span class="tag">Express.js</span>
+        <span class="tag">NestJS</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">WebSockets</span>
+        <span class="tag">RabbitMQ</span>
+        <span class="tag">Microservices</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Database</div>
+      <div class="skill-tags">
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">MongoDB</span>
+        <span class="tag">Supabase</span>
+        <span class="tag">Prisma ORM</span>
+        <span class="tag">RLS / RPCs</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Cloud &amp; DevOps</div>
+      <div class="skill-tags">
+        <span class="tag">AWS EC2</span>
+        <span class="tag">Vercel</span>
+        <span class="tag">Netlify</span>
+        <span class="tag">Git</span>
+        <span class="tag">GitLab</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Integrations &amp; Tools</div>
+      <div class="skill-tags">
+        <span class="tag">Stripe</span>
+        <span class="tag">PayPal</span>
+        <span class="tag">Figma</span>
+        <span class="tag">Postman</span>
+        <span class="tag">Claude Code</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-tags">
+        <span class="tag">English (Professional)</span>
+        <span class="tag">Urdu (Native)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Portfolio</div>
+  <h2 class="section-title">Featured <span>Projects</span></h2>
+
+  <!-- Intellicon — Flagship -->
+  <div class="project-featured reveal">
+    <div class="project-featured-header">
+      <div class="project-featured-icon">&#128222;</div>
+      <div class="project-featured-meta">
+        <div class="project-featured-name">Intellicon</div>
+        <div class="project-featured-sub">AI-Powered Omnichannel Contact Center Platform &nbsp;·&nbsp; Contegris</div>
+      </div>
+      <span class="project-featured-badge">Flagship Project</span>
+    </div>
+
+    <p class="project-featured-desc">
+      Pakistan's most comprehensive enterprise contact center suite — a full CCaaS (Contact Center as a Service) platform
+      that unifies voice, WhatsApp, email, SMS, social media, and live chat into a single agent interface. Trusted by major
+      brands like Daraz and Zameen.com, Intellicon serves banking, fintech, e-commerce, healthcare, and telecom industries.
+      I contributed to multiple core modules over 2.5 years at Contegris, building everything from real-time call dashboards
+      to microservices-based messaging pipelines and AI-integrated workflows.
+    </p>
+
+    <div class="project-modules">
+      <div class="project-module">
+        <div class="project-module-name">&#128222; Contact Center Core</div>
+        <div class="project-module-desc">Auto Dialer, ACD, Inbound/Outbound ops, IVR, CTI integration</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#127760; Omnichannel Hub</div>
+        <div class="project-module-desc">WhatsApp, Facebook, Instagram, LinkedIn, Email, SMS, Video, Web Chat</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#129302; AI Suite</div>
+        <div class="project-module-desc">AI Chatbot, AI Virtual Agent, Sentiment Analysis, AI QA scoring</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#127381; IntelliDesk</div>
+        <div class="project-module-desc">Helpdesk with ticketing automation, escalation workflows, SLA tracking</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#128200; IntelliSales CRM</div>
+        <div class="project-module-desc">Lead scoring, follow-up reminders, pipeline management, analytics</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#128101; Unified Agent Panel</div>
+        <div class="project-module-desc">360° customer profiles, real-time presence, multi-channel interaction</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#128202; Real-Time Dashboards</div>
+        <div class="project-module-desc">BI reports, live metrics, call quality analytics, performance KPIs</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#127981; Intelliflow</div>
+        <div class="project-module-desc">Drag-and-drop call flow builder — no-code IVR configurator</div>
+      </div>
+    </div>
+
+    <div class="project-stack">
+      <span class="tag">React.js</span>
+      <span class="tag">Node.js</span>
+      <span class="tag">Express.js</span>
+      <span class="tag">MySQL</span>
+      <span class="tag">MongoDB</span>
+      <span class="tag">WebSockets</span>
+      <span class="tag">RabbitMQ</span>
+      <span class="tag">Microservices</span>
+      <span class="tag">REST APIs</span>
+      <span class="tag">GitLab</span>
+    </div>
+
+    <div class="project-links">
+      <a href="https://www.intellicon.io/" target="_blank">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+        intellicon.io
+      </a>
+    </div>
+  </div>
+
+  <!-- TankAware -->
+  <div class="project-featured reveal" style="margin-top:1.5rem;">
+    <div class="project-featured-header">
+      <div class="project-featured-icon">&#128167;</div>
+      <div class="project-featured-meta">
+        <div class="project-featured-name">TankAware</div>
+        <div class="project-featured-sub">AI-Powered Petroleum Site Inspection &amp; Tank Management &nbsp;·&nbsp; Hashlogics</div>
+      </div>
+      <span class="project-featured-badge">Built from Scratch</span>
+    </div>
+
+    <p class="project-featured-desc">
+      TankAware is an enterprise-grade AI-powered platform that modernizes petroleum site inspections and tank management
+      for operators across Canada. I was the <strong>main developer</strong> who built this product from the ground up —
+      architecting the full stack, designing the data model, and delivering every core module. The platform shifts
+      petroleum maintenance from reactive to proactive by automating inspections, triggering smart work orders,
+      and providing real-time operational insights across multi-site infrastructure.
+    </p>
+
+    <div class="project-modules">
+      <div class="project-module">
+        <div class="project-module-name">&#128272; Auth &amp; Access Control</div>
+        <div class="project-module-desc">Role-based permissions for site managers, contractors &amp; stakeholders</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#127981; Site &amp; Tank Management</div>
+        <div class="project-module-desc">Centralized hub for company locations and tank infrastructure data</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#9989; Inspection Automation</div>
+        <div class="project-module-desc">Dynamic checklists, scheduling, execution &amp; real-time deficiency tracking</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#129302; AI Predictive Analytics</div>
+        <div class="project-module-desc">Identifies potential equipment failures before they occur</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#128196; Document &amp; Reporting</div>
+        <div class="project-module-desc">Compliance-focused docs with exportable regulatory reports</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#128295; Automated Work Orders</div>
+        <div class="project-module-desc">Issue-triggered creation, assignment &amp; completion tracking</div>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:1rem;">
+      <div style="display:flex; align-items:center; gap:0.5rem; font-size:0.82rem; color:var(--green);">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        30% increase in inspection accuracy
+      </div>
+      <div style="display:flex; align-items:center; gap:0.5rem; font-size:0.82rem; color:var(--green);">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        50% reduction in operational overhead
+      </div>
+      <div style="display:flex; align-items:center; gap:0.5rem; font-size:0.82rem; color:var(--green);">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        40% fewer manual errors
+      </div>
+    </div>
+
+    <div class="project-stack">
+      <span class="tag">React Native</span>
+      <span class="tag">Vue.js</span>
+      <span class="tag">Laravel</span>
+      <span class="tag">PHP</span>
+      <span class="tag">AWS</span>
+      <span class="tag">AI / Predictive Analytics</span>
+    </div>
+
+    <div class="project-links">
+      <a href="https://hashlogics.com/portfolio/tankaware/" target="_blank">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+        Case Study
+      </a>
+    </div>
+  </div>
+
+  <!-- ZyloBase -->
+  <div class="project-featured reveal" style="margin-top:1.5rem;">
+    <div class="project-featured-header">
+      <div class="project-featured-icon">&#128205;</div>
+      <div class="project-featured-meta">
+        <div class="project-featured-name">ZyloBase</div>
+        <div class="project-featured-sub">Unified CRM for Field Service Businesses &nbsp;·&nbsp; Hashlogics</div>
+      </div>
+      <span class="project-featured-badge">Fast-Paced Build</span>
+    </div>
+
+    <p class="project-featured-desc">
+      ZyloBase is the only CRM that takes a door knock to a recurring route — in one workflow. Built for pressure washing,
+      pest control, window cleaning, and lawn care businesses, it eliminates the need for separate canvassing and route tools
+      by combining both into a single platform. I delivered this project at high speed as part of the Hashlogics team,
+      shipping a full SaaS product with 12 trademarked features, Stripe Connect billing, Twilio SMS, QuickBooks integration,
+      and an offline-capable PWA. Publicly launched May 2026.
+    </p>
+
+    <div class="project-modules">
+      <div class="project-module">
+        <div class="project-module-name">&#128205; RouteConvert™</div>
+        <div class="project-module-desc">Converts door knocks to recurring routes in one tap</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#127968; Address History™</div>
+        <div class="project-module-desc">Service records tied to properties, not just customers</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#128200; QuoteMap™</div>
+        <div class="project-module-desc">Tap-on-map quoting with automatic property measurements</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#129302; Zyla™ AI</div>
+        <div class="project-module-desc">AI assistant for handling inbound customer texts automatically</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#128247; PerfectShot™</div>
+        <div class="project-module-desc">Live before/after photo alignment for field teams</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#128737; KnockGuard™</div>
+        <div class="project-module-desc">Territory awareness and DNC compliance enforcement</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#128176; MarginMap™</div>
+        <div class="project-module-desc">Territory profitability visualization per zone</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#128101; KnockSync™</div>
+        <div class="project-module-desc">Real-time field-to-supervisor sync across teams</div>
+      </div>
+    </div>
+
+    <div class="project-stack">
+      <span class="tag">Next.js</span>
+      <span class="tag">React.js</span>
+      <span class="tag">Node.js</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">Supabase</span>
+      <span class="tag">Stripe Connect</span>
+      <span class="tag">Twilio</span>
+      <span class="tag">TypeScript</span>
+      <span class="tag">Tailwind CSS</span>
+      <span class="tag">PWA</span>
+    </div>
+
+    <div class="project-links">
+      <a href="https://zylobase.com/" target="_blank">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20M12 2a15.3 15.3 0 0 0 0 20"/></svg>
+        zylobase.com
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Academic Background</div>
+  <h2 class="section-title">My <span>Education</span></h2>
+  <div class="edu-card reveal">
+    <div class="edu-icon">&#127979;</div>
+    <div>
+      <div class="edu-degree">Master of Computer Science (MCS)</div>
+      <div class="edu-uni">Virtual University of Pakistan</div>
+      <div class="edu-meta">Jan 2019 – Jan 2021 &nbsp;·&nbsp; CGPA: 3.34 / 4.0</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's Connect</div>
+  <h2 class="section-title">Get In <span>Touch</span></h2>
+  <p class="contact-desc">
+    I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:saleemtalha294@gmail.com" class="contact-link">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 4 10 9 10-9"/></svg>
+      saleemtalha294@gmail.com
+    </a>
+    <a href="tel:+923324403199" class="contact-link">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 7.3 7.3l.96-.96a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7a2 2 0 0 1 1.71 2.03z"/></svg>
+      +92 332 440 3199
+    </a>
+    <a href="https://www.linkedin.com/in/talha-saleem-680b381b2/" target="_blank" class="contact-link">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.58 0 4.24 2.36 4.24 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM6.62 20.45H4.07V9h2.55v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/talhasaleem294" target="_blank" class="contact-link">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .3C5.37.3 0 5.67 0 12.3c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.57v-2c-3.34.72-4.04-1.6-4.04-1.6-.54-1.38-1.33-1.75-1.33-1.75-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 22.1 24 17.6 24 12.3 24 5.67 18.63.3 12 .3z"/></svg>
+      GitHub
+    </a>
+  </div>
+  <a href="mailto:saleemtalha294@gmail.com" class="btn btn-primary" style="font-size:1rem; padding:0.85rem 2rem;">
+    Send Me a Message
+  </a>
+</section>
+
+<footer>
+  <p>Designed &amp; Built by <strong>Talha Saleem</strong> &nbsp;·&nbsp; Lahore, Pakistan &nbsp;·&nbsp; 2025</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Active nav link highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
