@@ -196,9 +196,10 @@ portfolio/
 - No external dependencies (pure HTML + CSS + JS, opens directly in any browser)
 - Scroll-reveal animations on all sections via `IntersectionObserver`
 - Sticky blurred navbar (`backdrop-filter: blur`) with scroll-based active link highlighting
+- Navbar includes a styled `Resume ↓` pill link that triggers direct PDF download
 
 ### Sections
-1. **Hero** — Profile photo (Talha.png, circular crop, purple gradient ring), name, title ("MERN Expert · Full-Stack JavaScript Developer"), animated badge ("Available for Remote · Freelance & SaaS MVPs"), three CTA buttons: Get In Touch / Download Resume / View My Work
+1. **Hero** — Profile photo (Talha.png, circular crop, purple gradient ring), name, title ("MERN Expert · Full-Stack JavaScript Developer"), animated badge ("Available for Remote Jobs · Freelance & SaaS MVPs"), three CTA buttons: Get In Touch / Download Resume / View My Work
 2. **About** — Bio paragraph + 4 stat cards (4+ yrs, 2 companies, 15+ techs, MCS)
 3. **Experience** — Vertical timeline: Hashlogics (present) → Contegris, both with detailed bullet points and named project callouts
 4. **Skills** — 6 grouped cards: Frontend, Backend, Database, Cloud/DevOps, Integrations, Languages
@@ -207,7 +208,7 @@ portfolio/
    - **TankAware** — 6 module sub-cards, 3 impact metrics in green, case study link
    - **ZyloBase** — 8 trademarked feature sub-cards, live link to zylobase.com
 6. **Education** — MCS card with institution, dates, CGPA
-7. **Contact** — Email, phone, LinkedIn, GitHub links + CTA button
+7. **Contact** — Email, phone, LinkedIn, GitHub links + two CTA buttons: Send Me a Message / Download Resume
 8. **Footer** — Name, location, year
 
 ---
@@ -225,10 +226,10 @@ portfolio/
 - **Files tracked:** `index.html`, `logo.svg`, `Talha.png`, `Senior Software Engineer.pdf`
 
 ### How to Update the Portfolio
-1. Edit `index.html` (and/or `logo.svg`) locally
+1. Edit the relevant file(s) locally (`index.html`, `portfolio.md`, `Talha.png`, or `Senior Software Engineer.pdf`)
 2. Run the following commands:
 ```bash
-git add index.html
+git add index.html portfolio.md Talha.png "Senior Software Engineer.pdf"
 git commit -m "Your update message"
 git push
 ```
