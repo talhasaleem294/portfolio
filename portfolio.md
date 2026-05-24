@@ -8,6 +8,7 @@
 | Title     | MERN Expert — Full-Stack JavaScript Developer      |
 | Email     | saleemtalha294@gmail.com                           |
 | Phone     | +92 332 4603199                                   |
+| WhatsApp  | wa.me/923324603199                                 |
 | Location  | Lahore, Pakistan                                   |
 | LinkedIn  | linkedin.com/in/talha-saleem-680b381b2             |
 | GitHub    | github.com/talhasaleem294                          |
@@ -74,7 +75,7 @@ PostgreSQL, MySQL, MongoDB, Supabase (RLS / RPCs), Prisma ORM
 AWS EC2, Vercel, Netlify, Git, GitLab
 
 ### Integrations & Tools
-Stripe, Stripe Connect, PayPal, Twilio, Figma, Postman, QuickBooks, Claude Code
+Stripe, Stripe Connect, PayPal, Twilio, QuickBooks, Figma, Postman, Claude Code
 
 ### Languages
 English (Professional Working Proficiency), Urdu (Native)
@@ -197,10 +198,13 @@ portfolio/
 - Scroll-reveal animations on all sections via `IntersectionObserver`
 - Sticky blurred navbar (`backdrop-filter: blur`) with scroll-based active link highlighting
 - Navbar includes a styled `Resume ↓` pill link that triggers direct PDF download
+- Mobile hero CTA (≤480px): grid layout — Get In Touch + Download Resume side by side, View My Work full width below
+- Mobile hero badge (≤480px): `white-space: nowrap` + reduced font (0.68rem) keeps "Available for Remote Jobs · Freelance & SaaS MVPs" on a single row
+- Mobile hero description (≤480px): left-aligned instead of centered for better readability
 
 ### Sections
 1. **Hero** — Profile photo (Talha.png, circular crop, purple gradient ring), name, title ("MERN Expert · Full-Stack JavaScript Developer"), animated badge ("Available for Remote Jobs · Freelance & SaaS MVPs"), three CTA buttons: Get In Touch / Download Resume / View My Work
-2. **About** — Bio paragraph + 4 stat cards (4+ yrs, 2 companies, 15+ techs, MCS)
+2. **About** — Bio paragraph + 4 stat cards (4+ yrs, 20+ features shipped, 15+ techs, MCS)
 3. **Experience** — Vertical timeline: Hashlogics (present) → Contegris, both with detailed bullet points and named project callouts
 4. **Skills** — 6 grouped cards: Frontend, Backend, Database, Cloud/DevOps, Integrations, Languages
 5. **Projects** — 3 full featured project cards with module sub-cards:
@@ -208,8 +212,8 @@ portfolio/
    - **TankAware** — 6 module sub-cards, 3 impact metrics in green, case study link
    - **ZyloBase** — 8 trademarked feature sub-cards, live link to zylobase.com
 6. **Education** — MCS card with institution, dates, CGPA
-7. **Contact** — Email, phone, LinkedIn, GitHub links + two CTA buttons: Send Me a Message / Download Resume
-8. **Footer** — Name, location, year
+7. **Contact** — Email, phone, LinkedIn, GitHub, WhatsApp links + two CTA buttons: Send Me a Message / Download Resume
+8. **Footer** — Name, location, year (2026)
 
 ---
 
@@ -217,7 +221,8 @@ portfolio/
 
 ### Live Site
 - **Platform:** Netlify (free tier)
-- **Custom Domain:** talhasaleem.online *(purchased for $0.98)*
+- **Live URL:** https://talhasaleem-portfolio.netlify.app/
+- **Custom Domain:** Not yet purchased *(plan: talhasaleem.online at ~$0.98)*
 - **Auto-deploy:** Yes — every push to `main` branch triggers a redeploy within ~30 seconds
 
 ### GitHub Repository
