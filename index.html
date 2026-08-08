@@ -394,7 +394,7 @@
   <h1 class="hero-name">Talha Saleem</h1>
   <p class="hero-title">MERN Expert &nbsp;·&nbsp; Full-Stack JavaScript Developer</p>
   <p class="hero-desc">
-    4+ years building scalable web applications with React, Next.js, Node.js, and modern cloud infrastructure. Based in Lahore, Pakistan — working remotely with clients worldwide.
+    5+ years building scalable web applications with React, Next.js, Node.js, and modern cloud infrastructure. Based in Lahore, Pakistan — working remotely with clients worldwide.
   </p>
   <div class="hero-cta">
     <a href="#contact" class="btn btn-primary">
@@ -419,7 +419,7 @@
   <div class="about-grid reveal">
     <div class="about-text">
       <p>
-        I'm a full-stack developer with 4+ years of experience crafting robust web applications. I specialize in React.js, Next.js, Node.js, TypeScript, and PostgreSQL, with a strong focus on scalable architecture and developer experience.
+        I'm a full-stack developer with 5+ years of experience crafting robust web applications. I specialize in React.js, Next.js, Node.js, TypeScript, and PostgreSQL, with a strong focus on scalable architecture and developer experience.
       </p>
       <p>
         At Hashlogics I lead end-to-end development — from pixel-perfect Figma-to-code UIs, to Supabase-powered backends with Row Level Security, to deploying on AWS EC2 and Vercel. I also integrate payment gateways like Stripe and PayPal.
@@ -436,15 +436,15 @@
     </div>
     <div class="about-stats">
       <div class="stat-card">
-        <div class="stat-num">4+</div>
+        <div class="stat-num">5+</div>
         <div class="stat-label">Years Experience</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">20+</div>
+        <div class="stat-num">25+</div>
         <div class="stat-label">Features Shipped</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">15+</div>
+        <div class="stat-num">20+</div>
         <div class="stat-label">Technologies</div>
       </div>
       <div class="stat-card">
@@ -460,6 +460,24 @@
   <div class="section-label">Work History</div>
   <h2 class="section-title">Where I've <span>worked</span></h2>
   <div class="timeline reveal">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-header">
+          <span class="timeline-role">Senior Software Engineer</span>
+          <span class="timeline-period">Jul 2026 — Present</span>
+        </div>
+        <div class="timeline-company">WhyCrew &nbsp;·&nbsp; Lahore, Pakistan</div>
+        <ul>
+          <li>Building <strong>Sentinel Edge</strong>, a threat-intelligence platform that collects security data from on-site sensors and streams it to a cloud dashboard over an encrypted connection.</li>
+          <li>Integrating with commercial firewalls (FortiGate, Palo Alto) to push threat feeds and pull back detection logs in real time.</li>
+          <li>Designing the backend data layer using Python, FastAPI, PostgreSQL, ClickHouse, and Kafka to handle high-volume event data and real-time streaming.</li>
+          <li>Building the multi-tenant console with role-based access control and real-time detection views using React and TypeScript.</li>
+          <li>Writing automated tests (378+ so far) and deploying the platform to a live client environment.</li>
+        </ul>
+      </div>
+    </div>
 
     <div class="timeline-item">
       <div class="timeline-dot"></div>
@@ -531,9 +549,12 @@
         <span class="tag">Node.js</span>
         <span class="tag">Express.js</span>
         <span class="tag">NestJS</span>
+        <span class="tag">Python</span>
+        <span class="tag">FastAPI</span>
         <span class="tag">REST APIs</span>
         <span class="tag">WebSockets</span>
         <span class="tag">RabbitMQ</span>
+        <span class="tag">Kafka</span>
         <span class="tag">Microservices</span>
       </div>
     </div>
@@ -543,6 +564,7 @@
         <span class="tag">PostgreSQL</span>
         <span class="tag">MySQL</span>
         <span class="tag">MongoDB</span>
+        <span class="tag">ClickHouse</span>
         <span class="tag">Supabase</span>
         <span class="tag">Prisma ORM</span>
         <span class="tag">RLS / RPCs</span>
@@ -552,6 +574,7 @@
       <div class="skill-group-title">Cloud &amp; DevOps</div>
       <div class="skill-tags">
         <span class="tag">AWS EC2</span>
+        <span class="tag">Docker</span>
         <span class="tag">Vercel</span>
         <span class="tag">Netlify</span>
         <span class="tag">Git</span>
@@ -586,8 +609,65 @@
   <div class="section-label">Portfolio</div>
   <h2 class="section-title">Featured <span>Projects</span></h2>
 
-  <!-- StoreIQ -->
+  <!-- Sentinel Edge -->
   <div class="project-featured reveal">
+    <div class="project-featured-header">
+      <div class="project-featured-icon">&#128274;</div>
+      <div class="project-featured-meta">
+        <div class="project-featured-name">Sentinel Edge</div>
+        <div class="project-featured-sub">Threat Intelligence &amp; Firewall Integration Platform &nbsp;·&nbsp; WhyCrew</div>
+      </div>
+      <span class="project-featured-badge">Client Project</span>
+    </div>
+
+    <p class="project-featured-desc">
+      A threat-intelligence platform that collects security data from on-site sensors and streams it to a
+      cloud dashboard over an encrypted connection. Integrates directly with commercial firewalls like
+      FortiGate and Palo Alto — pushing curated threat feeds and pulling back their detection logs in real
+      time — so security teams get one console view regardless of what hardware is generating the alerts.
+    </p>
+
+    <div class="project-modules">
+      <div class="project-module">
+        <div class="project-module-name">&#128225; Threat Feed Integration</div>
+        <div class="project-module-desc">Pull-based threat feeds consumed by FortiGate and Palo Alto firewalls</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#128203; Syslog Receiver</div>
+        <div class="project-module-desc">Parses vendor-specific firewall logs (CEF, key-value) into a unified event format</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#128225; Edge Collector</div>
+        <div class="project-module-desc">On-site agent streaming sensor telemetry up to the cloud over an encrypted link</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#128101; Multi-Tenant Console</div>
+        <div class="project-module-desc">Role-based access control with real-time detection views built in React and TypeScript</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#9889; Event Pipeline</div>
+        <div class="project-module-desc">Kafka streaming into ClickHouse for high-volume event storage and analytics</div>
+      </div>
+      <div class="project-module">
+        <div class="project-module-name">&#9989; Automated Testing</div>
+        <div class="project-module-desc">378+ automated tests validating detection accuracy before every deploy</div>
+      </div>
+    </div>
+
+    <div class="project-stack">
+      <span class="tag">Python</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">React</span>
+      <span class="tag">TypeScript</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">ClickHouse</span>
+      <span class="tag">Kafka</span>
+      <span class="tag">Docker</span>
+    </div>
+  </div>
+
+  <!-- StoreIQ -->
+  <div class="project-featured reveal" style="margin-top:1.5rem;">
     <div class="project-featured-header">
       <div class="project-featured-icon">&#128200;</div>
       <div class="project-featured-meta">
